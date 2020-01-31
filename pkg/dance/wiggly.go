@@ -13,16 +13,16 @@ type Wiggly struct {
 
 func NewWiggly() *Wiggly {
 	return &Wiggly{
-		moves:[]string{
+		moves: []string{
 			`♪┏(・o･)┛♪`,
 			`♪┗ ( ･o･) ┓♪`,
 		},
 	}
 }
 
-func (w Wiggly) Dance(file *os.File)  {
+func (w Wiggly) Dance(file *os.File) {
 	for {
-		for _, move := range moves {
+		for _, move := range w.moves {
 			clear(file)
 			fmt.Println(move)
 			time.Sleep(time.Second)
@@ -30,11 +30,11 @@ func (w Wiggly) Dance(file *os.File)  {
 	}
 }
 
-func clear(file *os.File)  {
-	cmd:=exec.Command("clear")
-	cmd.Stdout=file
-	err:=cmd.Run()
-	if err!=nil{
+func clear(file *os.File) {
+	cmd := exec.Command("clear")
+	cmd.Stdout = file
+	err := cmd.Run()
+	if err != nil {
 		panic(err)
 	}
 }
